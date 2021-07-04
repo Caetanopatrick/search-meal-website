@@ -24,12 +24,13 @@
       <div class = "container" style="background-color:white" id="myContainer">
          <br>
          <br>
-         <h4 style="font-size: 48px;"> Welcome to the meal database!</h4>
+         <h4 style="font-size: 3.12vw;"> Welcome to the meal database!</h4>
          <br>
          <br>
          <input type="text" id="searchBar" onkeyup="searchMeal(0)" placeholder="Search for Meal..">
          <br>
          <br>
+         <div class="table-responsive">
          <table class="table table-bordered" id="mealTable">
             <tr>
                {% comment %} Nomes das colunas {% endcomment %}
@@ -51,6 +52,7 @@
             </tr>
             {% endfor %}
          </table>
+         </div>
       </div>
    </body>
 </html>
