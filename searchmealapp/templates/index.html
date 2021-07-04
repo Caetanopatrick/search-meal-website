@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      {% comment %} Importando CSS e Js {% endcomment %}
+      <link rel="stylesheet" href={% static 'searchmealapp/index.css' %}>
+      <script src={% static 'searchmealapp/index.js' %}></script>
+      <title>Meal Database</title>
+   </head>
+   {% comment %} Importando bootstrap e fonte Cookie {% endcomment %}
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+   {% comment %} Usando material icon para a guia de navegação {% endcomment %}
+   <link rel="icon" type="image/png" href="{% static 'searchmealapp/icon.png' %}" />
+   <body style= "background-color: #FBE7C6;">
+      <br>
+      <br>
+      {% comment %} Definindo um container para a tabela {% endcomment %}
+      <div class = "container" style="background-color:white" id="myContainer">
+         <br>
+         <br>
+         <h4 style="font-size: 48px;"> Welcome to the meal database!</h4>
+         <br>
+         <br>
+         <input type="text" id="searchBar" onkeyup="searchMeal(0)" placeholder="Search for Meal..">
+         <br>
+         <br>
+         <table class="table table-bordered" id="mealTable">
+            <tr>
+               {% comment %} Nomes das colunas {% endcomment %}
+               <th>Name</th>
+               <th>Category</th>
+               <th>Area</th>
+               <th>Thumbnail</th>
+               <th>Cooking Instructions</th>
+            </tr>
+            {% comment %} Loop em cada meal do json {% endcomment %}
+            {% for meal in meals %}
+            <tr>
+               {% comment %} Extraíndo os atributos pedidos {% endcomment %}
+               <td>{{ meal.strMeal }}</td>
+               <td>{{ meal.strCategory }}</td>
+               <td>{{ meal.strArea }}</td>
+               <td><img src={{ meal.strMealThumb }} /></td>
+               <td>{{ meal.strInstructions }}</td>
+            </tr>
+            {% endfor %}
+         </table>
+      </div>
+   </body>
+</html>
